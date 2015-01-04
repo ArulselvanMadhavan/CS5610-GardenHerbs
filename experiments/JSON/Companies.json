@@ -1,0 +1,37 @@
+dataHandler ({ "companies" : [
+  {
+    "name":"Google",
+    "CEO":"Larry Page",
+    "Founded":"September 4, 1998, Menlo Park, CA",
+    "Headquarters":"Mountain View, CA",
+    "About":"Google is an American multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software."
+  },
+  {
+    "name":"Apple",
+    "CEO":"Tim Cook",
+    "Founded":"April 1, 1976, Cupertino, CA",
+    "Headquarters":"Cupertino, CA",
+    "About":"Apple Inc. is an American multinational corporation headquartered in Cupertino, California, that designs, develops, and sells consumer electronics, computer software, online services, and personal computers."
+  },
+  {
+    "name":"iRobot",
+    "CEO":"Colin Angle",
+    "Founded":"1990",
+    "Headquarters": "Bedford, MA",
+    "About":"iRobot Corporation is an American advanced technology company founded in 1990 and incorporated in Delaware in 2000."
+  },
+  {
+    "name":"Facebook",
+    "CEO":"Mark Zuckerberg",
+    "Founded":"February 4, 2004, Cambridge, MA",
+    "Headquarters":"Menlo Park, CA",
+    "About":"Facebook is an online social networking service headquartered in Menlo Park, California. Its name comes from a colloquialism for the directory given to students at some American universities."
+  },
+  {
+    "name":"Amazon",
+    "CEO":"Jeff Bezos",
+    "Founded":"July 5, 1994, Bellevue, WA",
+    "Headquarters":"Seattle, WA",
+    "About":"Amazon.com, Inc. is an American international electronic commerce company with headquarters in Seattle, Washington, United States. It is the world's largest internet company, based on revenue and number of employees"
+  }
+]})

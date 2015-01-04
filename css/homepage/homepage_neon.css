@@ -1,0 +1,154 @@
+﻿    body {
+        width:100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color:ThreeDHighlight
+    }
+
+    .pad {
+        padding: 10px;
+    }
+    .d_main_content
+    {
+        width:100%;
+    }
+    .d_header_links
+    {
+        height:10%;
+    }
+    .twitterwidget 
+    {
+        
+        height: 328px;
+        width: 20%;
+        float:right;
+    }
+    .myimage
+    {
+        height: 328px;
+        width: 20%;
+        display:inline;
+        float:left;
+    }
+    .aboutme
+    {
+        height:50%;
+        text-align:left;
+}
+    .twitter_head
+    {
+        color:grey
+    }
+    .Name_with_Neon
+    {
+        font-family:Iceland;
+        font-size:3.2em;
+        text-align:center;
+        color:#228DFF;
+        
+    }
+    .d_site_name
+    {
+        width:100%;
+        #background-color:#222222;
+    }
+    .Name_with_Neon:hover
+    {
+          -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+          -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+           animation: neon2 1.5s ease-in-out infinite alternate;
+    }
+    @font-face 
+    {
+  font-family: 'Iceland';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Iceland'), local('Iceland-Regular'), url(http://themes.googleusercontent.com/static/fonts/iceland/v3/F6LYTZLHrG9BNYXRjU7RSw.woff) format('woff');
+    }
+@-webkit-keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff,
+               0 0 20px  #fff,
+               0 0 30px  #fff,
+               0 0 40px  #228DFF,
+               0 0 70px  #228DFF,
+               0 0 80px  #228DFF,
+               0 0 100px #228DFF,
+               0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+               0 0 10px #fff,
+               0 0 15px #fff,
+               0 0 20px #228DFF,
+               0 0 35px #228DFF,
+               0 0 40px #228DFF,
+               0 0 50px #228DFF,
+               0 0 75px #228DFF;
+  }
+}
+@keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff,
+               0 0 20px  #fff,
+               0 0 30px  #fff,
+               0 0 40px  #228DFF,
+               0 0 70px  #228DFF,
+               0 0 80px  #228DFF,
+               0 0 100px #228DFF,
+               0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+               0 0 10px #fff,
+               0 0 15px #fff,
+               0 0 20px #228DFF,
+               0 0 35px #228DFF,
+               0 0 40px #228DFF,
+               0 0 50px #228DFF,
+               0 0 75px #228DFF;
+  }
+}
+
+@-moz-keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff,
+               0 0 20px  #fff,
+               0 0 30px  #fff,
+               0 0 40px  #228DFF,
+               0 0 70px  #228DFF,
+               0 0 80px  #228DFF,
+               0 0 100px #228DFF,
+               0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+               0 0 10px #fff,
+               0 0 15px #fff,
+               0 0 20px #228DFF,
+               0 0 35px #228DFF,
+               0 0 40px #228DFF,
+               0 0 50px #228DFF,
+               0 0 75px #228DFF;
+  }
+}
+
+.d_abt_me_exp_prj
+{
+    width:60%;
+    
+    }
+.p_abt_me
+{
+    text-align:left;
+}
+.d_lnk_exp
+{
+    text-align:center;
+}
+  .a_exp
+  {
+      font-size:x-large;
+      text-align:center;
+  }

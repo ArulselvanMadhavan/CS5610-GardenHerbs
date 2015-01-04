@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment2: CSS-Combining Pseudo Classes and Pseudo Elements</title>
+<link rel="stylesheet" href="css/exp2_style.css" />
+</head>
+<body>
+    <div class="d_header">
+        <header>
+            <h1 class="h1_Exp">Experiment2: Combining Pseudo Elements and Pseudo Classes</h1>
+            <h2 class="h2_Exp">Experiment Demo:</h2>
+            <h3 style="text-align:left"> Please hover over the below link.</h3>
+            <br/>
+        </header>
+    </div>
+
+    <table>
+        <tr>
+            
+            <td class="td_link"><a class="a_mylink" href="http://net4.ccs.neu.edu/home/arulselv/">Link to my home page</a></td>
+
+        </tr>
+    </table>
+
+    <h2>Documentation</h2>
+    <p><b>Purpose of the Experiment:</b>  To understand Pseudo-elements & pseudo-classes and create a utility that serves as an illustration of how they can be put together to create niche styles </p>
+    <p><b>What does the experiment do?</b> It displays the URL of a link , when the user hovers over a link</p>
+    <p><b>Illustration of the Experiment:</b></p>
+    <p><b>1.</b>In this experiment, I attempt to style an Pseudo-element in response to a Pseudo class . 
+    <p><b>2.</b>Here is the code that generates the Pseudo element from the real element-'a'</p>
+    
+        <pre style="text-align:left">
+   a:before {
+                -webkit-transform: translate3d(0, 0, 0);
+                content: attr(href);
+                font-size: 15px;
+                position: absolute;
+                width: 0%;
+                height: 50%;
+                top: 0;
+                right: 0;
+                border-bottom: 6px solid #FFF;
+                z-index: -1;
+                transition: all .4s ease;
+                opacity: 0;
+                overflow: hidden;
+            }
+</pre>
+
+    <p><b>3.</b>Pseudo Element created here is the href attribute of the element 'a'.
+    <p><b>4.</b>Pseudo Element is placed before the element 'a' as dictated by the pseudo-element keyword ':before'</p>
+    <p><b>5.</b>Oh wait, where did the pseudo-element go, if it was placed before the element 'a'? .<br />
+     We make the pseudo element invisible by stacking it behind the real element 'a' , by settings its opacity property to 1 ,by setting its width to 0, by setting its top and right positions as zero.You can alter these properties to find the pseudo-element lying alongside the real 'a' element.</p>
+    <p><b>6.</b>When the user hovers over the link , we bring forward the pseudo-element by altering its properties that would make the pseudo-element visible to the user.</p> 
+    <pre style="text-align:left">
+a:hover:before {
+                width: 100%;
+                left: 0;
+                opacity: 1;
+                top: -50%;
+               }
+</pre>
+    <hr/>
+    <a class="links" href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/CSS3/CSS3-exp2.html" target="_blank">Link to html file</a>
+    <br />
+    <a class="links" href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/CSS3/css/exp2_style.css" target="_blank">Link to the cssfile</a>
+    <br />
+    <hr />
+<br/>
+
+        <h2>References</h2>
+    <a style="float:left" href="http://stackoverflow.com/questions/5777210/how-to-write-hover-condition-for-abefore-and-aafter" target="_blank">1. Stackoverflow Conversatoin</a>
+        <br />
+        <br />
+    <a style="float:left" href="http://www.d.umn.edu/~lcarlson/csswork/selectors/pseudo_dif.html" target="_blank">2.umn.edu</a>
+        <br />
+        <br />
+    <a style="float:left" href="http://www.smashingmagazine.com/2011/07/13/learning-to-use-the-before-and-after-pseudo-elements-in-css/" target="_blank">3.Smashing magazine</a>
+        <br />
+        <br />
+    <a style="float:left" href="http://www.w3schools.com" target="_blank">4.w3schools.com</a>
+</body>
+</html>

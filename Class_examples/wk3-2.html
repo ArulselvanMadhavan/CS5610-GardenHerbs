@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>Title</th>
+                <th>Author</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input class="form-control" ng-model=""
+                </td>
+            </tr>
+            <tr ng-repeat="book in bks">
+                <td>{{book.isbn}}</td>
+                <td>{{book.title}</td>
+                <td>{{book.author}}</td>
+                <td>
+                    <button class=""
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function BookLibraryController($scope)
+        {
+            var book1=
+                {
+                    isbn: "1234",
+                    title: "Bk1"
+                    author: "AL"
+
+        }
+        var book2=
+                {
+                    isbn: "45",
+                    title: "Bk2"
+                    author: "MA"
+
+        }
+        var books = [book1,book2]
+        $scope.add = function()
+            $scope.delete = function(book)
+            {
+                console.log(book);
+                var index = scope.books.indexOf(book);
+                $scope.books.splice(index,1);
+            }
+        {
+            console.log($scope.newBook);
+            var book = {
+                isbn: $scope.newBook.isbn,
+                title: $scope.newBook.title,
+                author: $scope.newBook.author
+            }
+        }
+        }
+    </script>
+</body>
+</html>

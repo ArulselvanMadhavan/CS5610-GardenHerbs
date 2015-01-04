@@ -1,0 +1,4 @@
+﻿../../story/whatisnext.htm?../experiments/week4/story.txt                What is Next?
+../week4/Exp10_AngularJS_Converters.html                             Angular JS - Static Binding  
+../week4/client/index.html				                             MEAN Stack - Phase 1 - Front End Design - Angular js.
+../week4/client/index1.html											 MEAN Stack - Phase 2 - Server End design - Node js and Express js.

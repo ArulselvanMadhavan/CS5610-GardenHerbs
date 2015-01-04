@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="angular.min.js">
+
+    </script>
+</head>
+
+<body>
+    <!-- Simple Data Bind
+         Note: add data- as a prefix to make the page              HTML5 valid
+     <div data-ng-app="">
+        <p>Name: <input type="text" data-ng-model="name"></p>
+        <h3>You wrote {{name}}</h3>
+    </div>-->
+    <h1>Temperature Converter</h1>
+    <div data-ng-app="myapp">
+        <div>
+            <h2>Fahrenheit to Celcius</h2>
+            <p>Enter a temperature in Fahrenheit: <input type="text" data-ng-model="fahrenheit" /></p>
+            <p>See its corresponding value in Celsius here {{(fahrenheit-32) *5/9}}</p>
+            <h2>Celsius to Fahrenheit</h2>
+            <p>Input a temperature in Celsius: <input type="text" data-ng-model="celsius" /></p>
+            <p>The temperature in celsius would be {{celsius * 9/5 + 32}}</p>
+        </div>
+        <div>
+            <h2>Kilometers to Miles</h2>
+            <p>Enter your distance in Kilometers <input type="text" data-ng-model="kilometers" /></p>
+            <p>See its corresponding value in Miles here {{(kilometers * 0.62}}</p>
+            <h2>Miles to Kilometers</h2>
+            <p>Enter your distance in Miles here <input type="text" data-ng-model="miles" /></p>
+            <p>Distance in Miles is {{miles * 1.61}}</p>
+        </div>
+    </div>
+</body>
+</html>

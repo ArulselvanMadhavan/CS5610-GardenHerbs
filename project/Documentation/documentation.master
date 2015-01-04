@@ -1,0 +1,50 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="documentation.master.cs" Inherits="project_Documentation_documentation" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+        <link href="../css/home/masterStyle.css" rel="stylesheet" />
+        <link href="overview.css" rel="stylesheet" />
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="container">
+        <form id="form1" runat="server">
+
+            <asp:ContentPlaceHolder ID="pageHeader" runat="server">
+                <div class="header">
+                    <div id="d_firstRow">
+                        <div id="logo">
+                            <img id="logo_img" src="../images/logo.png" />
+                        </div>
+
+                    </div>
+                    <div id="sublogo" style="width: 100%">
+                        <img id="imgsublogo" class="pull-right" src="../images/log-subtext.png" />
+                    </div>
+                </div>
+            </asp:ContentPlaceHolder>
+            <asp:ContentPlaceHolder ID="pageBody" runat="server">
+            </asp:ContentPlaceHolder>
+      
+     <div class="footer">
+                        <div id="footer_left">
+                            <p class=fleft>&copy; Arulselvan Madhavan<br />
+                            CCIS,Northeastern University,MA.</p>
+                        </div>
+
+         
+                        <div id="footer_right" class="pull-right">
+                            <p class="fleft">Site is best viewed in</p>
+                    
+                            <img src="../images/chrome.png" style="width: 24px" />
+                        </div>
+                    </div>
+              </form>
+    </div>
+</body>
+</html>

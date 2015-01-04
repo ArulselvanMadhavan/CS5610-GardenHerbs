@@ -1,0 +1,17 @@
+﻿    hr {
+            background-color: darkgray;
+        }
+        html, body {
+            background-color: darkgray;
+        }
+
+        pre, code {
+            color: blue;
+        }
+
+        a {
+            text-decoration: none;
+        }
+        .links{
+             color:black; text-decoration:underline;
+        }

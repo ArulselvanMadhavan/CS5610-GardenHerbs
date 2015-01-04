@@ -1,0 +1,5 @@
+﻿../../story/whatisnext.htm?../experiments/project-experiments/story3.txt                What is Next?
+../project-experiments/Exp22-ResponsiveGrid.aspx                                     Responsive Grid View
+../project-experiments/Stylishgrid.aspx                                     Responsive Grid with Styling added to data elements
+../project-experiments/Exp25-Grid_View_Pagination.aspx                     Responsive Grid with Pagination
+                                   

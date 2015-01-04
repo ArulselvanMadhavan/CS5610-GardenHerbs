@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exp10: Angular JS</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="exp10_style.css" />
+    <script type="text/javascript" src="angular.min.js"></script>
+</head>
+<body>
+    <h1>Exp 10 : Angular JS - Static Converters</h1>
+    <h2>Experiment Demo</h2>
+    <i>Please enter values in the text boxes and see these values get converted automatically.</i>
+    <div class="d_exp_demo" data-ng-app="" data-ng-init="converters">
+        <div class="temperature converters">
+            <h2>Fahrenheit to Celcius</h2>
+            <p>Input a temperature in Fahrenheit: <input type="text" data-ng-model="fahrenheit" /></p>
+            <p>The temperature in celsius would be {{(fahrenheit - 32) * 5/9}}</p>
+        </div>
+        <div>
+            <h2>Celsius to Fahrenheit</h2>
+            <p>Input a temperature in Celsius: <input type="text" data-ng-model="celsius" /></p>
+            <p>The temperature in celsius would be {{celsius * 9/5 + 32}}</p>
+        </div>
+        <div>
+            <h2>Kilometers to Miles</h2>
+            <p>Input a temperature in Kilometers: <input type="text" data-ng-model="kilometers" /></p>
+            <p>The temperature in celsius would be {{(kilometers) * 0.62}}</p>
+            <h2>Miles to Kilometers</h2>
+            <p>Input a temperature in Miles: <input type="text" data-ng-model="miles" /></p>
+            <p>The temperature in celsius would be {{miles * 1.61}}</p>
+        </div>
+    </div>
+    <div class="d_documentation">
+        <h2>Documentation:</h2>
+        <p><b>Purpose of the Experiment:</b> To get hands on experience in using Angular JS to manipulate HTML elements.
+        This experiments acts an Angular JS refresher, so as to implement the MEAN Stack , in the later experiments.
+        <p><b>What does this experiment intend to achieve?</b> In this experiment, I have tried to use Angular JS directives to manipulate the HTML elements by retrieving data from them and updating data to them. </p>
+        <p>1. First , declare a container as Angular app , so that the browser understands that the elements that are under this tag has to be treated seperately.</p>
+        <p>2. Mark , the elements that you wish to manipulate as ng-model.</p>
+        <p>3. The value of ng-model elements can be accessed using {{name of the data model}}</p>
+        <p>4. Perform calulation on these data models and display them to the user.</p>
+        <pre>
+        Here is the sample code that perform these operations.
+             < input type="text" data-ng-model="kilometers" />< /p>       
+            < p>The temperature in celsius would be {{(kilometers) * 0.62}}< /p>
+            < h2>Miles to Kilometers< /h2>
+            < p>Input a temperature in Miles: < input type="text" data-ng-model="miles" />< /p>
+            < p>The temperature in celsius would be {{miles * 1.61}}< /p>
+</pre>
+        </div>
+    <hr />
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/week4/Exp10_AngularJS_Converters.html" target="_blank">Link to html file</a>
+    <br />
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/week4/exp10_style.css" target="_blank">Link to css file</a>
+    <hr />
+    <h2>References</h2>
+    <a href="https://docs.angularjs.org/api" target="_blank">1.AngularJS Docs/</a> <br />
+    <a href="http://net4.ccs.neu.edu/home/jga/examples/" target="_blank">2.Prof.Annunziato's Inclass example</a><br />
+    <a href="http://www.w3schools.com" target="_blank">3.w3schools</a>
+</body>
+</html>

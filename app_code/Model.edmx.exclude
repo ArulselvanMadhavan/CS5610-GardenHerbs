@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="arulselvModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2005" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'arulselv.arulselv.postComments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="postComments">
+          <Key>
+            <PropertyRef Name="commentid" />
+          </Key>
+          <Property Name="commentid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="postId" Type="int" />
+          <Property Name="commentedUser" Type="varchar" MaxLength="255" />
+          <Property Name="wallName" Type="varchar" MaxLength="255" />
+          <Property Name="commentedDate" Type="datetime" />
+          <Property Name="comments" Type="varchar" MaxLength="500" />
+          <Property Name="likedusers" Type="varchar" MaxLength="2500" />
+        </EntityType>
+        <EntityType Name="postmaster">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="wallName" Type="varchar" MaxLength="255" />
+          <Property Name="postedBy" Type="varchar" MaxLength="255" />
+          <Property Name="postedDate" Type="datetime" />
+          <Property Name="postContent" Type="varchar" MaxLength="500" />
+          <Property Name="likedusers" Type="varchar" MaxLength="2500" />
+        </EntityType>
+        <Association Name="FK__postComme__postI__4E53A1AA">
+          <End Role="postmaster" Type="Self.postmaster" Multiplicity="0..1" />
+          <End Role="postComments" Type="Self.postComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postmaster">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="postComments">
+              <PropertyRef Name="postId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="arulselvModelStoreContainer">
+          <EntitySet Name="postmaster" EntityType="Self.postmaster" Schema="arulselv" store:Type="Tables" />
+          <EntitySet Name="postComments" EntityType="Self.postComments" store:Type="Tables" store:Schema="arulselv">
+            <DefiningQuery>SELECT 
+[postComments].[commentid] AS [commentid], 
+[postComments].[postId] AS [postId], 
+[postComments].[commentedUser] AS [commentedUser], 
+[postComments].[wallName] AS [wallName], 
+[postComments].[commentedDate] AS [commentedDate], 
+[postComments].[comments] AS [comments], 
+[postComments].[likedusers] AS [likedusers]
+FROM [arulselv].[postComments] AS [postComments]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__postComme__postI__4E53A1AA" Association="Self.FK__postComme__postI__4E53A1AA">
+            <End Role="postmaster" EntitySet="postmaster" />
+            <End Role="postComments" EntitySet="postComments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="arulselvModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="postmaster">
+          <Key>
+            <PropertyRef Name="postid" />
+          </Key>
+          <Property Name="postid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="wallName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="postedBy" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="postedDate" Type="DateTime" Precision="3" />
+          <Property Name="postContent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="likedusers" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="postComments" Relationship="Self.FK__postComme__postI__4E53A1AA" FromRole="postmaster" ToRole="postComments" />
+        </EntityType>
+        <EntityType Name="postComment">
+          <Key>
+            <PropertyRef Name="commentid" />
+          </Key>
+          <Property Name="commentid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="postId" Type="Int32" />
+          <Property Name="commentedUser" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="wallName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="commentedDate" Type="DateTime" Precision="3" />
+          <Property Name="comments" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="likedusers" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="postmaster" Relationship="Self.FK__postComme__postI__4E53A1AA" FromRole="postComments" ToRole="postmaster" />
+        </EntityType>
+        <Association Name="FK__postComme__postI__4E53A1AA">
+          <End Role="postmaster" Type="Self.postmaster" Multiplicity="0..1" />
+          <End Role="postComments" Type="Self.postComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="postmaster">
+              <PropertyRef Name="postid" />
+            </Principal>
+            <Dependent Role="postComments">
+              <PropertyRef Name="postId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="arulselv" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="postmasters" EntityType="Self.postmaster" />
+          <EntitySet Name="postComments" EntityType="Self.postComment" />
+          <AssociationSet Name="FK__postComme__postI__4E53A1AA" Association="Self.FK__postComme__postI__4E53A1AA">
+            <End Role="postmaster" EntitySet="postmasters" />
+            <End Role="postComments" EntitySet="postComments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="arulselvModelStoreContainer" CdmEntityContainer="arulselv">
+          <EntitySetMapping Name="postmasters">
+            <EntityTypeMapping TypeName="arulselvModel.postmaster">
+              <MappingFragment StoreEntitySet="postmaster">
+                <ScalarProperty Name="postid" ColumnName="postid" />
+                <ScalarProperty Name="wallName" ColumnName="wallName" />
+                <ScalarProperty Name="postedBy" ColumnName="postedBy" />
+                <ScalarProperty Name="postedDate" ColumnName="postedDate" />
+                <ScalarProperty Name="postContent" ColumnName="postContent" />
+                <ScalarProperty Name="likedusers" ColumnName="likedusers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="postComments">
+            <EntityTypeMapping TypeName="arulselvModel.postComment">
+              <MappingFragment StoreEntitySet="postComments">
+                <ScalarProperty Name="commentid" ColumnName="commentid" />
+                <ScalarProperty Name="postId" ColumnName="postId" />
+                <ScalarProperty Name="commentedUser" ColumnName="commentedUser" />
+                <ScalarProperty Name="wallName" ColumnName="wallName" />
+                <ScalarProperty Name="commentedDate" ColumnName="commentedDate" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="likedusers" ColumnName="likedusers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS3-Neon Glow Experiment</title>
+<link rel="stylesheet" href="css/exp1_style.css" />
+</head>
+<body>
+    <header>
+        <div class="d_header">
+            <h1>Experiment1: CSS3 - Neon Glow Effects</h1>
+            <br />
+            <h2>Experiment Demo</h2>
+            <p> Hover over this text to see the effects of the animation</p>
+            <div class="d_box">
+                <p class="p_glow_text1">
+                    NORTHEASTERN UNIVERSITY
+                </p>
+            </div>
+        </div>
+    </header>
+    <br />
+    <hr />
+    <h2>Documentation</h2>
+    <p><strong>1.</strong> CSS3 animations are created using the @keyframes rule.</p>
+    <p><strong>2.</strong> Here is the @keyframes rule that I use to produce the glow effect.</p>
+    <p>
+        <pre>
+from{
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+    }
+to {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+   }
+    </pre>
+</p>
+    <h3> Explanation of @keyframe rule used in this experiment:</h3>
+    <p><strong>1.</strong> In this example, I have used the text-shadow property of CSS3 to produce the animation effect</p>
+    <p><strong>2.</strong> Attributes of text-shadow that I used:  <pre>text-shadow [h-shadow] [v-shadow] [blur] [color] </pre></p>
+    <p><strong>3.</strong> To produce the text-shadow effect as an animation , I am passing different arguments to the [blur] and [color] parameters of text-shadow</p>
+    <p><strong>4.</strong> 'from' attribute of @keyframe holds the list of values that it takes over the animation cycle. </p>
+    <p><strong>5.</strong> 'to' attribute holds the list of values that the @keyframes rule takes when the animation completes a cyle.</p>
+    <h3> Explanation of Animation function used in this experiment:</h3>
+    <p><strong>1.</strong> Animation cycle is the period of time over which the animation is configured to occur. Here is the configuration of my animation function</p>
+    <pre>
+            -webkit-animation-name: Arul_glow_function;
+            -webkit-animation-duration: 1.5s; 
+            -webkit-animation-direction:alternate;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-iteration-count:infinite;
+/*The parameters in the animation function are self-explanatory*/
+</pre>
+    
+    <p><strong>2.</strong> However, the word 'webkit' demands a mention. Webkit is a layout engine software component used for rendering web pages in web browsers like Chrome and Safari.</p>
+    <p><strong>3.</strong>Different browsers use different layout engines. For example Mozilla uses '-moz' . For your animation to work in all the browsers that  you want them to work , you will have to configure their corresponding layout engine , just as I have done for webkit</p>
+    <h3>Wrapping Up</h3>
+    <p><strong>1.</strong>We aren't done yet. Here's the final and important step. We will have to bind our animation function with the component that we want to animate. I wanted the animation to affects to be produced when the user hovers over a text. Here is the code </p>
+    <pre>
+.p_glow_text1:hover 
+{
+            -moz-animation: Arul_glow_function 1.5s ease-in-out infinite alternate;
+}
+}
+</pre>
+    <p><strong>2.</strong> I have also used the CSS3 transition function to let the animations transition from one style to another smoothly</p>
+
+
+    <hr />
+
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/CSS3/CSS3-exp1.html" target="_blank">Link to the html file</a>
+    <br />
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/CSS3/css/exp1_style.css" target="_blank">Link to the cssfile</a>
+    <hr />
+        <h2>References</h2>
+        <a href="http://www.w3schools.com">1.w3schools.com</a><br />
+    <a href="http://www.css3.info/">2.CSS3 Info</a>
+</body>
+</html>

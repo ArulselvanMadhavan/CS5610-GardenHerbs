@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exp9: Location finder using Google Maps API</title>
+  <link rel="stylesheet" href="exp8_style.css" />
+    <script src="http://maps.googleapis.com/maps/api/js?sensor=false">
+
+
+    </script>
+</head>
+<body>
+    <h1>Exp9: Location finder using Google Maps API</h1>
+    <h2> Experiment Demo</h2>
+    <div class="d_exp">
+        <h4><i>Click this button to find your position in the map.</i></h4>
+        <p class="intro" id="demo"><button onclick="getLocation()">Find my location</button></p>
+        <div id="mapholder"></div>
+    </div>
+    <div class="d_documentation">
+        <h2>Documentation:</h2>
+        <p><b>Purpose of the Experiment:</b> To learn,understand and extract data from Google Maps API using Javascript.</p>
+        <p><b>Steps:</b></p>
+        <p>1. HTML 5 offers geolocation support. (i.e) HTML5 allows the browsers to fetch the location information of the users with their consent.</p>
+        <pre>
+Here is the Code using which we can check whether the browser supports Geolocation:
+
+function getLocation() {
+if (navigator.geolocation) {
+navigator.geolocation.getCurrentPosition(showPosition, showError);
+}
+else { x.innerHTML = "Geolocation is not supported by this browser."; }
+}
+        </pre>
+        <p>2. The location information retrieved will be precise and it will be in the form of latitude and longitude.</p>
+        <p>Note: The Browser will ask for the user's permission before accessing the location information of the information.</p>
+        <pre>
+            function showPosition(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            latlon = new google.maps.LatLng(lat, lon);
+            var img_url = "http://maps.googleapis.com/maps/api/staticmap?center="+latlon+"&zoom=14&size=400x300&sensor=false";
+            mapholder = document.getElementById('mapholder');
+            mapholder.style.height = '250px';
+            mapholder.style.width = '100%';
+        </pre>
+        <p>3. Passing the longitude and latitude information to Google Maps API , gets us an image of the map pointing out the user's location.</p>
+        <pre>
+            Here are the settings for the map image that we pass to the Google Maps API.
+            var myOptions = {
+            center: latlon, zoom: 14,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+            };
+            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+            var marker = new google.maps.Marker({ position: latlon, map: map, title: "You are here!" });
+
+        </pre>
+    </div>
+    <script>
+        var x = document.getElementById("demo");
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            }
+            else { x.innerHTML = "Geolocation is not supported by this browser."; }
+        }
+
+        function showPosition(position) {
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+            latlon = new google.maps.LatLng(latitude, longitude);
+            var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
+            mapholder = document.getElementById('mapholder')
+            mapholder.style.height = '250px';
+            mapholder.style.width = '100%';
+
+            var myOptions = {
+                center: latlon, zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                mapTypeControl: false,
+                navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL }
+            };
+            var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
+            var marker = new google.maps.Marker({ position: latlon, map: map, title: "You are here!" });
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+
+    </script>
+    <hr />
+    <a class="links" href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/API/Exp-8-Location-finder.html" target="_blank">Link to html file</a>
+    <br />
+    <a class="links" href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/API/exp8_style.css " target="_blank">Link to css file</a>
+    <hr />
+    <div class="d_references">
+        <br />
+        <h2>References<br /></h2>
+        <a href="http://www.w3schools.com" target="_blank">1.www.w3schools.com <br /></a>
+        <a href="https://developers.google.com/maps/" target="_blank">2. Google Maps Developer API<br /></a>
+        <a href="http://stackoverflow.com/questions/14409645/google-map-api-v3-google-has-disabled-use-of-the-maps-api-for-this-application" target="_blank">3.Discussion on Google Maps API erros in StackOverflow </a>
+    </div>
+
+</body>
+</html>

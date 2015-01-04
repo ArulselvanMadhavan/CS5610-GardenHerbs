@@ -1,0 +1,98 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="project - Copy.master.cs" Inherits="Project" %>
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>One Job Searhc</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" href="masterstyle.css" />
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="login.js"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <%--<form id="form1" runat="server">--%>
+  <%--      <asp:ContentPlaceHolder id="MenuBar" runat="server">
+            <label for="show-menu" class="show-menu">
+            Show Menu</label>
+            <input type="checkbox" id="show-menu" role="button">
+            <ul id="menu">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us&#65516;</a>
+                    <ul class="hidden">
+                        <li><a href="#">Who We Are</a></li>
+                        <li><a href="#">What We Do</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Employers &#65516;</a>
+                    <ul class="hidden">
+                        <li><a href="#">Post Jobs</a></li>
+                        <li><a href="#">Search for Candidates</a></li>
+                        <li><a href="#">Illustration</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Interview Material</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </asp:ContentPlaceHolder>--%>
+        <asp:ContentPlaceHolder id="MenuBar" runat="server">
+            
+            <nav>
+                <div id="menubar_div">
+                    <ul class="primary">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us &nbsp; &#65516;</a>
+                            <ul class="sub">
+                                <li><a href="#">Services</a> </li>
+                                <li><a href="#">Locations</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Employers &nbsp; &#65516;</a>
+                            <ul class="sub">
+                                <li><a href="#">Post Jobs</a> </li>
+                                <li><a href="#">Find Candidates</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Interviews &nbsp;  &#65516;</a>
+                            <ul class="sub">
+                                <li><a href="#">Interview Experience</a></li>
+                                <li><a href="#">Inerview Questions</a></li>
+                                <li><a href="#">Interview Materials</a></li>
+                            </ul>
+                        </li>
+                        <li id="signup"><a href="#">Sign up</a> </li>
+                        <li id ="login"><a id="login-trigger" href="#">Login <span>&#65516;</span> </a>
+                            <div id="login-content">
+                                <form>
+            <%--Field set for Input HTML Elements--%>
+                                    <fieldset id="login-inputs">
+                                        <input id="username" type="email" name="Email" placeholder="Your email address" required>
+                                        <input id="password" type="password" name="Password" placeholder="Password" required>
+                                    </fieldset>
+            <%--Field set for Input Action Elements--%>
+                                    <fieldset id="login-actions">
+                                        <input type="submit" id="submit" value="Log in">
+                                        <label>
+                                        <input type="checkbox" checked="checked">Keep me signed in</label>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </li>
+                        <li><a href="#">Documentation</a> </li>
+                    </ul>
+                </div>
+            </nav>
+            </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="SearchBar" runat="server">
+
+        </asp:ContentPlaceHolder>
+ <%--   </form>--%>
+   
+</body>
+</html>

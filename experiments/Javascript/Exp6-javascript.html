@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment6:Javascript</title>
+    <script src="jquery.min.js"></script>
+    <script type="text/javascript" src="exp6_calculate.js"></script>
+    <link rel="stylesheet" href="../bootstrap.css" />
+</head>
+<body>
+    <div class="d_body">
+        <h1>Experiment6: Javascript - Countdown Timer.</h1>
+        <h2>Experiment Demo:</h2>
+
+        <p><i>Please Enter a date below</i></p>
+        <form>
+            <div>
+                <input type="date" id="duedate" name="duedate" required="required" />
+            </div>
+
+            <input type="button" id="btn1" value="Calculate Time Remaining" class="btn-primary" onclick="calculateRemainingtime()" />
+
+        </form>
+        <hr />
+
+        <div id="countdown"></div>
+        <div>
+            <i>Not only does this experiment calculates the time remaining at the instant of the button click but also it refreshes the calculated time on its own and continues its operation until another  button click happens</i>
+        </div>
+        <div class="d_documentation">
+            <hr />
+            <h2>Documentation</h2>
+
+            <p><strong>Purpose of the Experiment</strong>: To learn the basics of Javascript and use them to generate a utility useful for real world web apps. </p>
+            <p>
+                <strong>What does this experiment do?</strong> This experiment gets the due date from the user and calculates the time remaining to the due date entered by the user.
+                The experiment also refreshes itself and updates the time remaining field every passing second.
+            </p>
+            <p><strong>Steps:</strong></p>
+            <p>1.Get the date from the user using HTML Date control</p>
+            <p>2.When the user clicks the Calculate time remaining button, call the Javascript function that performs the calculation of the time remaining to the due date.<p>
+            <p>2.Check the validity of the date<p>
+            <p>3.If the date is valid, then calculate the time remaining to the due date.</p>
+            <p>4.Format the calculated time remaining value in the form of a HTML element and display it in the webpage</p>
+            <p>5.The code that calculates the remaining time is passed as an argument to the setInterval function to update the time remaining field every passing second.</p>
+            <pre>
+Javascript Code: That gets the input from the HTML DOM and calculates the result and updates the DOM. 
+    //var target_date = new Date("Aug 15, 2019").getTime();
+    function calculateRemainingtime() {
+    var input = document.getElementById('due_date');
+    var test_input = '< p>' + input + '< /p>';
+    document.getElementById('test') = test_input;
+    // variables for time units
+    var days, hours, minutes, seconds;
+    // get tag element
+    //var countdown = document.getElementById("countdown");
+    // update the tag with id "countdown" every 1 second
+    // find the amount of "seconds" between now and target
+    var target_date = new Date(input).getTime();
+    //var target_date = duedate.getTime();
+    var current_date = new Date().getTime();
+    var seconds_left = (target_date - current_date) / 1000;
+    // do some time calculations
+    days = parseInt(seconds_left / 86400);
+    seconds_left = seconds_left % 86400;
+    hours = parseInt(seconds_left / 3600);
+    seconds_left = seconds_left % 3600;
+    minutes = parseInt(seconds_left / 60);
+    seconds = parseInt(seconds_left % 60);
+    // format countdown string + set tag value
+    var countdown = '<p>' + days + '</p>';
+    document.getElementById('countdown').innerHTML = countdown;
+    //return remainingtime;
+}
+</pre>
+        </div>
+        <hr />
+        <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/Javascript/Exp6-javascript.html" target="_blank">Link to html file</a>
+        <br />
+        <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/Javascript/exp6_calculate.js" target="_blank">Link to JS file</a>
+        <h2>References:</h2>
+        <a href="http://www.mindgrader.com" target="_blank">1. Mindgrader.com</a><br />
+        <a href="http://www.w3schools.com" target="_blank">2. w3schools</a>
+    </div>
+</body>
+</html>

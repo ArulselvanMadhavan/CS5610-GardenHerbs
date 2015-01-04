@@ -1,0 +1,26 @@
+﻿body {
+    width:100%;
+}
+
+.pad{
+    min-height: 100%;
+    width: 90%;
+    margin: 0px auto;
+}
+
+.maincontent{
+    position:relative;
+    margin: 0px auto;
+}
+.cropwrapper {
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+@media screen and (max-width: 720px) {
+    table, thead, tbody, th, td, tr { 
+			display: block; 
+		}
+    .cropwrapper { display: block; }
+}
+

@@ -1,0 +1,152 @@
+﻿.flip-container {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+    /*border: 1px solid #ccc;*/
+    border: none;
+}
+
+    .flip-container:hover .flipper,
+    .flip-container.hover .flipper {
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+
+.flip-container, .front, .back {
+    padding-left: 1%;
+    padding-right: 1%;
+    /*width: 230px;*/
+    height: 230px;
+}
+
+.back {
+    width: 100%;
+    margin: 0 auto;
+    cursor:pointer;
+}
+
+.flipper {
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.front, .back {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.front {
+    z-index: 2;
+}
+
+.back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    background: #f2f5f3;
+}
+
+.front .name {
+    font-size: 2em;
+    display: inline-block;
+    background: rgba(33, 33, 33, 0.9);
+    color: #f8f8f8;
+    font-family: Courier;
+    padding: 5px 10px;
+    border-radius: 5px;
+    bottom: 60px;
+    left: 25%;
+    position: absolute;
+    text-shadow: 0.1em 0.1em 0.05em #333;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    -o-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+}
+
+.back-logo {
+    position: absolute;
+    top: 4%;
+    left: 9%;
+    width: 16%;
+    height: 12%;
+    /*background: url(http://davidwalsh.name/demo/logo.png) 0 0 no-repeat;*/
+    /*background:url(../images/favicon.png) 0 0 no-repeat;*/
+}
+
+.back-title {
+    font-weight: bold;
+    color: #00304a;
+    position: relative;
+    text-align: center;
+    text-shadow: 0.1em 0.1em 0.05em #acd7e5;
+    font-family: Courier;
+    font-size: 2em;
+}
+
+.back p.plantedBy {
+    position: relative;
+    /*bottom: 40px;*/
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 0 2%;
+    font-family: 'Lucida Calligraphy';
+    line-height: 2em;
+}
+
+.flip-container, .front, .back {
+    padding-left: 1%;
+    padding-right: 1%;
+    /* width: 230px; */
+    height: 230px;
+}
+
+@media only screen and (max-width : 1091px), only screen and (max-device-width : 1091px) {
+    .flipcontainer {
+        width: 100%;
+    }
+
+    .imgRecentUploads {
+        height: 230px;
+        width: 100%;
+        border-radius: 6px;
+    }
+}
+
+@media only screen and (max-width : 991px), only screen and (max-device-width : 991px) {
+    #f_container1, #f_container2 {
+        display: inline-block;
+        width: 48%;
+        margin: 0 auto;
+    }
+
+    #f_container3, #f_container4 {
+        display: inline-block;
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width : 991px), only screen and (max-device-width : 991px) {
+    #f_container1, #f_container2, #f_container3, #f_container4 {
+        display: block;
+        width: 96%;
+        margin: 10px auto;
+    }
+}

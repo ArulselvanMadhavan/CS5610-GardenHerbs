@@ -1,0 +1,204 @@
+﻿    
+.links{
+    color:black;
+    text-decoration:underline;
+}
+.d_main {
+            padding: 2%;
+        }
+
+        pre, code {
+            color: blue;
+        }
+
+        .d_content {
+            width: 100%;
+            text-align: justify;
+        }
+
+        .d_image {
+            width: 40%;
+        }
+
+        #i_mongo {
+            margin: 0px auto;
+            float: left;
+            border: 5px solid white;
+            width: 100%;
+        }
+
+        .d_wrap {
+            display: inline-block; /* Displays an element as an inline-level block container. The inside of this block is formatted as block-level box, and the element itself is formatted as an inline-level box*/
+            -webkit-box-shadow: 0 0 70px #fff;
+            -moz-box-shadow: 0 0 70px #fff;
+            box-shadow: 0 0 70px #fff;
+            margin-top: 40px;
+        }
+
+        .decor {
+            background: #6EAF8D;
+            background: -webkit-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
+            background: -moz-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
+            background: -o-linear-gradient(left, #CDEBDB 50%, #6EAF8D 50%);
+            background: linear-gradient(left, white 50%, #6EAF8D 50%);
+            background-size: 50px 25%;
+            padding: 2px;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+            position: relative;
+            text-align: left;
+        }
+
+        li {
+            float: left;
+        }
+
+        ul:after {
+            clear: both;
+        }
+
+        ul:before,
+        ul:after {
+            content: " ";
+            display: table;
+        }
+
+        nav {
+            position: relative;
+            background: #2B2B2B;
+            background-image: -webkit-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+            background-image: -moz-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+            background-image: -o-linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+            background-image: linear-gradient(bottom, #2B2B2B 7%, #333333 100%);
+            text-align: center;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 1px #0E0E0E;
+            -webkit-box-shadow: 2px 2px 3px #888;
+            -moz-box-shadow: 2px 2px 3px #888;
+            box-shadow: 2px 2px 3px #888;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        .links{
+            color:black; text-decoration:underline;
+        }
+
+        /*For each element in the menu, apply padding and border styles so that they appear seperated when the page is rendered*/
+        ul.primary li a {
+            display: block;
+            padding: 20px 30px;
+            border-right: 1px solid #3D3D3D;
+        }
+        /*Last element in the menu doesn't need any border-right as it is the last element */
+        ul.primary li:last-child a {
+            border-right: none;
+        }
+
+        /* When the user hovers over primary menu change its coloto white*/
+        ul.primary li a:hover {
+            color: #000;
+        }
+
+        /*Style settings for the sub-menu items*/
+        ul.sub {
+            position: absolute;
+            z-index: 200;
+            box-shadow: 2px 2px 0 #BEBEBE;
+            width: 35%;
+            display: none;
+        }
+
+            ul.sub li {
+                float: none;
+                margin: 0;
+            }
+                /*Style settings for the sub-menu items*/
+                /*Style settings to seperate one sub-menu item from another*/
+                ul.sub li a {
+                    border-bottom: 1px dotted #ccc;
+                    border-right: none;
+                    color: #000;
+                    padding: 15px 30px;
+                }
+                /*Last sub-menu item doesn't need to be seperated*/
+                ul.sub li:last-child a {
+                    border-bottom: none;
+                }
+                /*Change background of the sub-menu item when the user hovers over it*/
+                ul.sub li a:hover {
+                    color: #000;
+                    background: #eeeeee;
+                }
+
+
+        /*Settings that define how the sub-menu items should be rendered when the user hovers over a primary menu*/
+        ul.primary li:hover ul {
+            display: block;
+            background: #fff;
+        }
+        /*Settings that define how the links should be rendered when the user hovers over a primary menu*/
+        ul.primary li:hover a {
+            background: #fff;
+            color: #666;
+            text-shadow: none;
+        }
+
+        ul.primary li:hover > a {
+            color: #000;
+        }
+
+        /*Styles to be applied when the user has a screen size less than 600px*/
+        @media only screen and (max-width: 600px) {
+            .decor {
+                padding: 3px;
+            }
+
+            .wrap {
+                width: 100%;
+                margin-top: 0px;
+            }
+
+            li {
+                float: none;
+            }
+
+            ul.primary li:hover a {
+                background: none;
+                color: #8B8B8B;
+                text-shadow: 1px 1px #000;
+            }
+
+            ul.primary li:hover ul {
+                display: block;
+                background: #272727;
+                color: #fff;
+            }
+
+            ul.sub {
+                display: block;
+                position: static;
+                box-shadow: none;
+                width: 100%;
+            }
+
+                ul.sub li a {
+                    background: #272727;
+                    border: none;
+                    color: #8B8B8B;
+                }
+
+                    ul.sub li a:hover {
+                        color: #ccc;
+                        background: none;
+                    }
+        }

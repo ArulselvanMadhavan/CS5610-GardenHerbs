@@ -1,0 +1,5 @@
+﻿../../story/whatisnext.htm?../experiments/project-experiments/story4.txt                What is Next?
+../../protected/Storingimage.aspx                                 Uploading images into database
+../../protected/Exp27-Storing_image_in_database.aspx              Retrieving the uploaded image from database
+../project-experiments/Exp28-Datalist.aspx                                 Working with DataList
+                                   

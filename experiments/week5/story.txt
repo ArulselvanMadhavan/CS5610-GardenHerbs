@@ -1,0 +1,5 @@
+﻿../../story/whatisnext.htm?../experiments/week5/story.txt                What is Next?
+http://cs5610-arulselv.rhcloud.com/index-1.html                         MEAN Stack - Mongo DB - Insert and Find  
+http://cs5610-arulselv.rhcloud.com/index-3.html				                             MEAN Stack - Mongo DB - Find and Delete
+http://cs5610-arulselv.rhcloud.com/index-4.html											 MEAN Stack - Mongo DB - Find and Update 
+http://cs5610-arulselv.rhcloud.com/custom_directive.html               Custom Angular Directive

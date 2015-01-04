@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <title>MEAN STACK: Courses in NEU</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+<body data-ng-app="course-rate-app">
+
+    <script type="text/javascript" src="libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="libs/lodash/dist/lodash.min.js"></script>
+    <script type="text/javascript" src="libs/underscore.string/dist/underscore.string.min.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/new-controller.js"></script>
+    <script type="text/javascript" src="app/services.js"></script>
+    <script type="text/javascript" src="app/filters.js"></script>
+    <script type="text/javascript" src="app/directives.js"></script>
+    <h1>Experiment 13 : MEAN Stack : Designing Single Page Application - Establishing connections to Mongo DB - Performing Create and Read Operations.</h1>
+    <h2>Experiment Demo: </h2>
+    <i>The page initially has static content. When the user enters the values and clicks 'add' button, the application connects to Mongo DB hosted in OpenShift and inserts the new records into the DB.</i>
+    <i>After a successful insert, the application initiates another request to DB to fetch the most recent courselist from the DB and updates the course list.</i>
+    <!-- Adding a Controller-->
+    <div ng-controller="course-rate-ctrl">
+        <div class="page-header">
+            <h1>Courses available in NEU</h1>
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Courses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="course in courses">
+                        <td>
+                            <div class="pull-left">
+                                <strong>{{course.number}}</strong><br />
+                                <small>{{course.title}}</small>
+                            </div>
+                            <div class="pull-right">
+
+                                <button type="button" class="btn btn-danger pull-right" ng-click="deletecourse($index)">
+                                    Delete
+                                </button>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <form role="form" data-ng-submit="addcourse(newcourse.number, newcourse.title)">
+            <div class="row">
+                <div class="col-sm-5">
+                    <label class="sr-only" for="number">Number</label>
+                    <input type="text" class="form-control" name="number" placeholder="Enter the Course number that you wanna add"
+                           data-ng-model="newcourse.number" autofocus />
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="title" placeholder="Enter the name of the course that you wanna add"
+                           data-ng-model="newcourse.title" />
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-default form-control">
+                        Add
+                    </button>
+                </div>
+            </div>
+            <div class="alert alert-info" ng-if="!courses.length">
+                <strong>First!</strong> No courses are available for rating at this moment.
+            </div>
+
+        </form>
+        <div class="d_documentation">
+            <h2>Documentation:</h2>
+        </div>
+        <p><b>Purpose of the experiment:</b>To establish connections to the Mongo DB hosted in Openshift from our application and perform a simple 'Insert' and 'find'  operation into the Database.</p>
+        <p><b>What does this experiment do?</b>Through this experiment , I have learned about how to connect to Mongo DB hosted in a cloud environment . I have tried adding records to the Database and have also tried listing all the records from the database.
+        <p>1. To establish connections to the database, we need a library that will provide the functions that are essential for communicating with the database. </p>
+        <p>In this experiment, I have used MongoJS to establish connections to the database. MongoJS can be installed using the below command.</p>
+<pre>
+npm install mongojs
+</pre>
+        <pre>
+Here is the code that 'requires' all the mongojs library functions into the server.js file.
+var express = require('express');
+
+Here is the code that configures the connection to the mongo DB and to the collections to which our application will talk to.
+This configuration allows the server.js to be compatible for both remote and local connections.
+ 
+var mongodbconnectionstring = process.env.OPENSHIFT_MONGODB_DB_URL+ "cs5610";
+if(typeof process.env.OPENSHIFT_MONGODB_DB_URL == "undefined"){
+	mongodbconnectionstring = "cs5610";           //-----------------------------------------------------> specifies the db name
+}
+
+var db= mongojs(mongodbconnectionstring,['neu_courses']); //----------Specifies the Collection name
+</pre>
+        <p>2. After establishing connections to the remote DB , I experimented on inserting records into the DB.</p>
+        <p>3. To implement an 'add' operation into our application , we need to configure our controller.js first and then tell our server to identify such requests and pass appropriate instructions to DB to achieve the desired 'Insert' operation.</p>
+        <pre>
+Configuration at Controller.js :
+Here I have used the HTML 'POST' method to tell the server that this request is for inserting data records into DB.
+
+$scope.addcourse = function (number, title,score) {
+console.log($scope.newcourse); 
+$http.post("/courselist", $scope.newcourse)       // Post the data that you want to add to DB ,to the server.
+.success(function (doc) {                         
+console.log(doc);
+$scope.all();                                     
+$scope.newcourse.title="";  // Clears the data after it has been inserted into DB.
+$scope.newcourse.number="";  // Clears the data after it has been inserted into DB.
+  });
+};
+</pre>
+        <p>4. Configuration at server.js:</p>
+        <pre>
+At the server side, I have configured the server to be on the lookout for 'post' requests and when it see such a request , 
+it parses the body of the request and inserts it into the Database.
+
+app.post('/courselist', function (req, res) {
+var crs = req.body;
+console.log(crs);
+db.neu_courses.insert(req.body, function (err, doc) {
+console.log(doc);
+res.json(doc);
+    });
+</pre>
+        <p>4. Once we make the server insert the data, we need to refresh the application , to let the most recent status of the database reflect in the page.</p>
+        <p>5. To achieve this, we have a method that connects to DB and fetches all the records from the DB. </p>
+        <pre>
+The method is called after the document inserting is declared success by the server.
+$scope.all();                                     
+</pre>
+
+<pre>
+Here is the actual method that initiats a 'GET' request to the server.
+
+$scope.all = function () {         
+$http.get("/courselist")              // Initiates a GET Request.
+.success(rendercourses);           
+}
+   
+$scope.rendercourses = function (response) {     // Assigns the retrieved results to the object that lists courses in the HTML.
+$scope.courses = response;
+    }
+</pre>
+
+
+        <h2>References</h2>
+        <a href="https://www.youtube.com/watch?v=QvSC2wHjyAY&feature=youtu.be&list=UUCgliN1n-OaiYJbZV8gypNA">1. Professor Annunziato's Video tutorial on Node js and Mongo DB</a><br />
+        <a href="https://www.youtube.com/watch?v=7m-nSxSSCno&index=4&list=UUCgliN1n-OaiYJbZV8gypNA">2. Professor Annunziato's Video tutorial on how to publish code to Open Shift</a><br />
+        <a href="https://developers.openshift.com/en/node-js-overview.html">3. Open Shift Tutorial on hosting node js</a><br />
+        <a href="https://www.openshift.com/blogs/run-your-nodejs-projects-on-openshift-in-two-simple-steps">4. Open Shift tutorial on running node.js servers.</a><br />
+        <a href="http://expressjs.com/3x/api.html">5. Express js 3x docs.</a><br />
+    </div>
+</body>
+
+
+</html>

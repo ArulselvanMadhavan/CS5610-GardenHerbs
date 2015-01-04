@@ -1,0 +1,38 @@
+﻿body {
+    font-family: 'Segoe UI';
+    background: @#ccc;
+    font-size: 100%;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+body .wrapper {
+    background: #FFF;
+    width: 960px;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+table {
+    width: 100%;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+    .wrapper {
+        max-width: 300px;
+        width: 300px;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .wrapper {
+        max-width: 480px;
+        width: 480px;
+    }
+}
+
+pre {
+    color: blue;
+}

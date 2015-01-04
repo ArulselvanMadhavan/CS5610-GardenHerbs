@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exp7-Extracting JSON Data</title>
+    <link rel="stylesheet" href="exp7_style.css" />
+    <script src="mustache.js"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="jquery.cycle.all.js"></script>
+</head>
+<body>
+
+    <div id="d_heading">
+        <h1>Experiment 7: Extracting Data from a JSON file</h1>
+        <h2>Experiment Demo: <b><i>Data displayed in the below slideshow is extracted from a JSON file and applied to HTML elements dynamically using JQuery.</i></b></h2>
+        <i>The data will change on its own or you can also you the links to navigate.</i>
+        <br />
+    </div>
+    <div id="companiesbox" class="group">
+        <nav id="buttons">
+            <a href="#" id="prev_btn">Previous</a>
+            <a href="#" id="next_btn">Next</a>
+        </nav>
+        <div style="position: relative; width: 585px; height: 317px;" id="companies_carousel"></div>
+    </div>
+
+
+
+    <script id="extract_companies" type="text/template">
+        {{#companies}}
+        <div class="companies_group">
+            <img src="{{name}}.jpg" alt="photo of {{name}}" />
+            <h3>Company Name: {{name}}</h3>
+            <h4>CEO: {{CEO}}</h4>
+            <h4>Founded on: {{Founded}}</h4>
+            <h4>Headquarters: {{Headquarters}}</h4>
+            <p>{{About}}</p>
+        </div>
+        {{/companies}}
+    </script>
+
+    <script>
+        function dataHandler(data) {                            //dataHandler is the object name under which the companies have been listed as an array  in the Companies.json file
+            var template = $('#extract_companies').html();      //A function returning the HTML content to set. Receives the index position of the element in the set and the old HTML value as arguments.
+            var html = Mustache.render(template, data);         //Have loaded Mustache.js library to render the contents cyclically .
+            $('#companies_carousel').html(html);                //The companies from the static JSON file are applied to the companies_carousel HTML element (div element)
+
+
+            $('#companies_carousel').cycle({                    //I have used the jQuery Cycle Plugin, which is a slideshow plugin that supports many different types of transition effects.
+                fx: 'fade',                                     //Each child element inside the company carousel containter will be displayed as slides.
+                pause: 1,
+                next: '#next_btn',                              //Next child element is assigned to the hyperlink #next_btn
+                prev: '#prev_btn',                              //Prev child element is assigned to the hyperlink #prev_btn
+                speed: 500,
+                timeout: 10000
+            });
+        };
+
+    </script>
+    <script src="Companies.json">
+    </script>
+
+    <br />
+    <div class="d_documentation">
+        <h2>Documentation:</h2>
+        <p><b>Purpose of the Experiment:</b> To learn to parse JSON data and bind it to the HTML elements
+        <p><b>What does experiment intend to achieve?</b> This experiment attempts to extract data from a static JSON file and displays it in the form of a slideshow. The slides change every 5 seconds.</p>
+        <p><b>Steps:</b></p>
+        <p>1. I created a static json file with the list of companies I want to display in the slideshow.</p>
+        <p> Here is a sample object from my JSON file</p>
+        <pre>
+I used Online JSON editor to create this file. But you can use any text editor to create a JSON file.
+{ "companies" : [
+  {
+    "name":"Google",
+    "CEO":"Larry Page",
+    "Founded":"September 4, 1998, Menlo Park, CA",
+    "Headquarters":"Mountain View, CA",
+    "About":"Google is an American multinational corporation specializing in Internet-related services and products. These include online advertising technologies, search, cloud computing, and software."
+  }
+</pre>
+        <p>2. Now we need to access this JSON file and extract its contents. To let your browsers download JSON files , add the below tag to the web.config file. </p>
+<pre>
+< staticcontent>
+< mimemap fileextension=".json" mimetype="application/json" />
+< /staticcontent>
+</pre>
+<pre>
+Reference the JSON file like this:
+    < script src="Companies.json">
+        </pre>
+        <p>3.Here is the code which extracts the data from the JSON file and assigns them to the HTML elements using Jquery.</p>
+        <p>I h ave added Inline Comments to each line to explain what each line does.</p>
+<pre>
+    < script id="extract_companies" type="text/template">      //The script type is given as text/template to make the browser ignore this block so that the other scripts in this file can extract HTML elements from this block and use them.
+        {{#companies}}                                         //For each 'companies' object in the Companies.json file , create the below HTML elements 
+    < div class="companies_group">
+    < img src="{{name}}.jpg" alt="photo of {{name}}" />        //For each company name , search for a image and assign it to an image attribute
+    < h3> Company Name: {{name}}< /h3>                         // Each company name object in the JSON file, is assigned to a h3 tag which in turn displays the value of the {{name}} element
+    < h4> CEO: {{CEO}}< /h4>                                    // Each CEO object in the JSON file, is assigned to a h3 tag which in turn displays the value of the {{CEO}} element
+    < h4> Founded on: {{Founded}}< /h4>                        // Each Founded object in the JSON file, is assigned to a h3 tag which in turn displays the value of the {{Founded}} element
+    < h4> Headquarters: {{Headquarters}}< /h4>                 // Each Headquarters object in the JSON file, is assigned to a h3 tag which in turn displays the value of the {{Headquarters}} element
+    < p>{{About}}< /p>                                         // Each About object in the JSON file, is assigned to a h3 tag which in turn displays the value of the {{About}} element
+        < /div>
+        {{/companies}}
+    < /script>
+    < script>
+        function dataHandler(data) {                            //dataHandler is the object name under which the companies have been listed as an array  in the Companies.json file
+            var template = $('#extract_companies').html();      //A function returning the HTML content to set. Receives the index position of the element in the set and the old HTML value as arguments.
+            var html = Mustache.render(template, data);         //Have loaded Mustache.js library to render the contents cyclically .
+            $('#companies_carousel').html(html);                //The companies from the static JSON file are applied to the companies_carousel HTML element (div element)
+            $('#companies_carousel').cycle({                    //I have used the jQuery Cycle Plugin, which is a slideshow plugin that supports many different types of transition effects.
+                fx: 'fade',                                     //Each child element inside the company carousel containter will be displayed as slides.
+                pause: 1,
+                next: '#next_btn',                              //Next child element is assigned to the hyperlink #next_btn
+                prev: '#prev_btn',                              //Prev child element is assigned to the hyperlink #prev_btn
+                speed: 500,
+                timeout: 10000
+            });
+        };
+        </pre>
+    </div>
+    <hr />
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/JSON/Exp7-Extracting_JSON_Data.html" style="color:black; text-decoration:underline">Link to html file</a>
+    <br />
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/JSON/exp7_style.css" style="color:black; text-decoration:underline">Link to css file</a>
+    <hr />
+    <br />
+    <div class="d_ref">
+        <h2>References:</h2>
+        <a href="http://www.jsoneditoronline.org/">1. JSON Online Editor</a><br />
+        <a href="http://jquery.malsup.com/cycle/">2. JQuery Cycle Plugin</a><br />
+        <a href="http://api.jquery.com">3. JQuery Library</a><br />
+        <a href="http://stackoverflow.com/questions/3160758/what-does-a-href-class-view-mean">4. Stackoverflow: What does href="#" mean?</a><br />
+        <a href="http://stackoverflow.com/questions/8158193/how-to-allow-download-of-json-file-with-asp-net">5.Stackoverflow</a><br />
+        <a href="http://learn.jquery.com/about-jquery/how-jquery-works/">6. How JQuery works</a>
+    </div><br />
+</body>
+</html>

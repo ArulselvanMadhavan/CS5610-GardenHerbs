@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="">
+<head>
+    <title>Exp5-Angular JS</title>
+
+    <script src="angular.min.js"></script>
+    <script type="text/javascript" src="dataBind.js"></script>
+    <link rel="stylesheet" href="exp5_style.css" />
+    
+    
+</head>
+
+<body data-ng-controller="ctrl">
+    <div class="d_header">
+        <h1>Experiment5: Angular JS - Data Binding to HTML elements</h1>
+        <h2>Experiment Demo:</h2>
+        <p>Add or delete friends to the data grid shown below</p>
+        <hr/>
+    </div>
+    <div class="d_demo">
+        <h2>You have {{rows.length}} Friend{{plural(rows)}} <span data-ng-show="temp">?<small class="muted"><em> (Currently you have {{rows.length-1}} friend{{plural(rows)}} )</em></small></span></h2>
+        <form class="form-horizontal">
+            <span data-ng-class="{'input-append':addName}">
+                <input id="add" type="text" placeholder="Add a friend?" data-ng-model="addName" data-ng-change="addTemp()" />
+                <input type="submit" class="btn btn-primary" data-ng-click="addRow()" data-ng-show="addName" value="+ add" />
+            </span>
+
+            <span class="search input-prepend" data-ng-class="{'input-append':search}">
+                <span class="add-on"><i class="icon-search"></i></span>
+                <input type="text" class="span2" placeholder="Search" data-ng-model="search">
+                <button type="submit" class="btn btn-inverse" data-ng-click="search=''" data-ng-show="search" value="+ add"> Clear Search</button>
+            </span>
+        </form>
+        <table class="table table-striped">
+            <tr data-ng-repeat="row in rows | filter : search" data-ng-class="{'muted':isTemp($index)}">
+                <td class="auto-style1">{{$index+1}}</td>
+                <td class="auto-style2">{{row}}</td>
+                <td class="auto-style3">
+                    <button class="btn btn-danger btn-mini" data-ng-click="deleteRow(row)" data-ng-hide="isTemp($index)">Remove<i class="icon-trash icon-white"></i></button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+    <div class="d_documentation">
+        <h2>Documentation:</h2>
+    </div>
+    <p><b>Purpose of the experiment:</b>To learn to bind data to HTML elements using Angular JS</p>
+    <p><b>What does this experiment do?</b>It updates a HTML table dynamically based on the input from the user. It lets a user to add/delete names to the grid. It also allows the user to search the grid.</p>
+    <p><b>Steps:</b></p>
+    <p><b>1.</b>Mark the scope of your Angular App and identify your controller</p>
+    <p>Here , I have marked the entire html form as my ng-app and html body element as my ng-controller</p>
+    <p><b>2.</b>Mark the elements for which you want to dynamically alter the CSS properties with ng-class attribute.</p>
+    <p><b>3.</b>Mark the HTML elements whose values you will need to collect and bind with the ng-application data as ng-model.</p>
+    <p><b>4.</b>In this experment, we have to collect values from 2 textboxes(Add friends textbox and Search textbox). So they have been marked as ng-model. </p>
+    <p><b>5.</b>Here is the code that calculates the value that has to be mapped to the HTML elements based on the user actions</p>
+    <pre>
+             function ctrl($scope) {
+            $scope.rows = ['Arul', 'Selvan', 'Imaginary'];
+            $scope.temp = false;
+            $scope.addRow = function () {
+                $scope.temp = false;
+                $scope.addName = "";
+            };
+            $scope.deleteRow = function (row) {
+                $scope.rows.splice($scope.rows.indexOf(row), 1);
+            };
+            $scope.plural = function (tab) {
+                return tab.length > 1 ? 's' : '';
+            };
+            $scope.addTemp = function () {
+                if ($scope.temp) $scope.rows.pop();
+                else if ($scope.addName) $scope.temp = true;
+                if ($scope.addName) $scope.rows.push($scope.addName);
+                else $scope.temp = false;
+            };
+            $scope.isTemp = function (i) {
+                return i == $scope.rows.length - 1 && $scope.temp;
+            };
+        </pre>
+    <p><b>6.</b>When the user makes changes to the textbox,the expression under the ng-change directive gets executed. i.e $scope.addTemp gets executed.</p>
+    <p><b>7.</b>When the user clicks the add button, the row gets pushed into the queue. i.e $scope.addRow gets executed which inturn calls the $scope.addTemp method and pushes the row onto the grid.</p>
+    <p><b>8.</b>When the user clicks delete button, $scope.deleteRow method gets called and pops the element from the grid.</p>
+    <p><b>9.</b>The search function is achieved using the ng-show directive. When the user makes changes to the search box, the ng-show("search") becomes active and the ng-app shows all the values that matches the parameter passed to it.</p>
+    <hr/>
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/angularjs/Exp5-AngularJS-DataBinding.html" target="_blank">Link to html file</a>
+    <br />
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/angularjs/dataBind.js" target="_blank">Link to the js file</a>
+    <br />
+    <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/angularjs/exp5_style.css" target="_blank">Link to the css file</a>
+    <hr />
+        <h2>References</h2>
+        <a href="https://docs.angularjs.org/api" target="_blank">1.AngularJS Docs</a> <br />
+    <a href="http://net4.ccs.neu.edu/home/jga/examples/" target="_blank">2.Prof.Annunziato's Inclass example</a><br />
+    <a href="http://www.w3schools.com" target="_blank">3.w3schools</a>
+</body>
+</html>

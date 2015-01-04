@@ -1,0 +1,59 @@
+﻿   body 
+        {
+            background-color: ThreeDHighlight;
+            /*background-color:black;*/
+        }
+   pre,code{
+       color:blue;
+   }
+        .p_glow_text1:hover {
+            /*Animation Effects for browsers that suppport webkit; for instance -Chrome,Safari*/
+            -webkit-animation-name: Arul_glow_function;
+            -webkit-animation-duration: 1.5s;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-timing-function: ease-in-out;
+            -webkit-animation-direction: alternate;
+            -webkit-animation-iteration-count: infinite;
+            /*Animation Effects for Mozilla Browser*/
+            /* Specified the properties in-line*/
+            -moz-animation: Arul_glow_function 1.5s ease-in-out infinite alternate;
+            animation: Arul_glow_function 1.5s ease-in-out infinite alternate;
+        }
+        .p_glow_text1 {
+            text-align: center;
+                       
+            font-size: 3.5em;
+            font-family:'Lucida Calligraphy';
+            color: #FF1177;
+            margin: 20px 0 20px 0;
+            /*Transition property for Chrome,Safari*/
+            -webkit-transition-property: all;
+            -webkit-transition-duration: 0.5s;
+            /*Transition property for Mozilla*/
+            -moz-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        .d_box {
+            background-color: #222222;
+            width: 80%;
+            text-align:center;
+        }
+        @-webkit-keyframes Arul_glow_function {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+            }
+        }
+        @keyframes Arul_glow_function {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #FF1177, 0 0 70px #FF1177, 0 0 80px #FF1177, 0 0 100px #FF1177, 0 0 150px #FF1177;
+            }
+
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #FF1177, 0 0 35px #FF1177, 0 0 40px #FF1177, 0 0 50px #FF1177, 0 0 75px #FF1177;
+            }
+        }

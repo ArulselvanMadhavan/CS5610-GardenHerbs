@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Exp4:JQuery</title>
+ <link rel="stylesheet" href="css/exp4_style.css" />
+    <script src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="animate.js"></script>
+</head>
+<body>
+    <div class="d_header">
+        <h1>Experiment4:Using JQuery to dynamically create,modify and delete a HTML element</h1>
+        <h2>Experiment Demo</h2>
+        <p><b><i> Click anywhere in the grey highlighted area</i></b></p>
+    </div>
+    <div class="touch-area">
+
+    </div>
+    <div class="d_documentation">
+        <h2>Documentation:</h2>
+        <p><b>Purpose of the Experiment:</b>To learn to use the JQuery libraries to model the HTML elements and the CSS of HTML elements.</p>
+        <p>
+            <b>What does this experiment intend to achieve?</b> When the user clicks in the grey highlighted area, a circle expands and fades dynamically.<br />
+            This experiment dynamically creates a HTML element based on the position of the user clicks, apply style to it and remove that element after a specific time period.
+        </p>
+        <p><b>Steps:</b></p>
+        <p><b>1.</b>Using JQuery, Set the width and height of the 'touch area' when the document load completes.</p>
+        <p><b>2.</b>When a click event happens within the 'touch-area', create a new <div> element that will hold the circle style effect that is about to be generated using a CSS style class - '.circle'</p>
+        <p>
+            <b>3.</b>Here is the code of the CSS class '.circle' and the Jquery that creates a div element for a circle and maps it to the appropriate stylesheets.
+            <br />Inline comments are added to the code to make the code-self-explanatory.
+        </p>
+        <pre>
+ $(document).ready(function () {
+ $('.touch-area').width($(window).width());
+ $('.touch-area').height(60);
+ var index = 0;
+ $('.touch-area').on('click', function (e) {
+ var circle_ident = 'circle_' + index;
+ var circle_ident_div = div class="circle ' + circle_ident + '"> div
+ var dot_circle_ident = '.' + circle_ident;
+ $('.touch-area').append(circle_ident_div); /* Append the circle div to the touch area div*/
+ $(dot_circle_ident).offset({ top: e.pageY, left: e.pageX }); /*Get the co-ordinates of the click event and set it as the current co-ordinates of the circle*/
+ $(dot_circle_ident).addClass('expandandfade'); /* Add the expand and fade class to the new created circle div element*/
+ setTimeout(function () {
+ $(dot_circle_ident).remove();}, 1000);/* remove the created circle element after 1 sec */
+                index++;
+            });
+        });
+            </pre>
+        <hr/>
+        <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/Jquery/Exp4-JQuery.html" target="_blank">Link to source file</a>
+        <h2>References:</h2>
+        <a href="http://www.w3schools.com" target="_blank">1.w3schools</a><br />
+        <a href="http://www.api.jquery.com" target="_blank">2.api.jquery.com</a>
+    </div>
+</body>
+</html>

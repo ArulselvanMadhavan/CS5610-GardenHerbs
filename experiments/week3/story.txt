@@ -1,0 +1,4 @@
+﻿../../story/whatisnext.htm?../experiments/week3/story.txt                What is Next?
+../JSON/Exp7-Extracting_JSON_Data.html                                   Extracting Data from a static JSON file
+../API/Exp-8-Location-finder.html                                        Google Maps API: Find Map for current location
+../API/Exp-9-API.aspx                                                   Extracting data from a Public API by placing AJAX calls.

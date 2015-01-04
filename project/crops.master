@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="crops.master.cs" Inherits="project_crops" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Green Revolution</title>
+    <link  href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="cropform" runat="server">
+    <div>
+        <asp:ContentPlaceHolder id="PageHeader" runat="server">
+               
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="pageContent" runat="server">
+            
+            </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>

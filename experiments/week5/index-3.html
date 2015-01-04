@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <title>MEAN STACK: Courses in NEU</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+<body data-ng-app="course-rate-app">
+
+    <script type="text/javascript" src="libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="libs/lodash/dist/lodash.min.js"></script>
+    <script type="text/javascript" src="libs/underscore.string/dist/underscore.string.min.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/controller.js"></script>
+    <script type="text/javascript" src="app/services.js"></script>
+    <script type="text/javascript" src="app/filters.js"></script>
+    <script type="text/javascript" src="app/directives.js"></script>
+    <h1>Experiment 14 : MEAN Stack : Designing Single Page Application - Configuring Database Operations - Delete Operation</h1>
+    <h2>Experiment Demo: </h2>
+    <i>As opposed to the previous experiment, the page gets loaded with the most recent data from the database. The user is allowed to perform a delete operation on any record that he chooses to.</i>
+    <!-- Adding a Controller-->
+    <div ng-controller="course-rate-ctrl">
+        <div class="page-header">
+            <h1>Courses available in NEU</h1>
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Courses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="course in courses">
+                        <td>
+                            <div class="pull-left">
+                                <strong>{{course.number}}</strong><br />
+                                <small>{{course.title}}</small>
+                            </div>
+                            <div class="pull-right">
+
+                                <button type="button" class="btn btn-danger pull-right" ng-click="deletecourse(course._id)">
+                                    Delete
+                                </button>
+
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <form role="form" data-ng-submit="addcourse(newcourse.number, newcourse.title)">
+            <div class="row">
+                <div class="col-sm-5">
+                    <label class="sr-only" for="number">Number</label>
+                    <input type="text" class="form-control" name="number" placeholder="Enter the Course number that you wanna add"
+                           data-ng-model="newcourse.number" autofocus />
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="title" placeholder="Enter the name of the course that you wanna add"
+                           data-ng-model="newcourse.title" />
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-default form-control">
+                        Add
+                    </button>
+                </div>
+            </div>
+            <div class="alert alert-info" ng-if="!courses.length">
+                <strong>First!</strong> No courses are available for rating at this moment.
+            </div>
+
+        </form>
+        <div class="d_documentation">
+            <h2>Documentation:</h2>
+        </div>
+        <p><b>Purpose of the experiment:</b>To enable the application with the feature to find and delete any record from the database.</p>
+         <p>1. To delete a single record from the database , we have to configure both the controller and server to handle such delete requests.</p>
+        <p>2. When the user clicks an element that he wishes to delete , the id of the corresponding element is passed to the server via HTTP 'DELETE' method.</p>
+        <p>2. Configurations at the Controller : </p>
+        
+        <pre>
+$scope.deletecourse = function (id)
+{
+console.log(id);
+$http.delete("/courselist/"+ id)
+.success(function (doc) {
+console.log(doc);
+$scope.all();
+ });
+}
+</pre>
+        <p>3. The server is configured to receive such delete requests and fetch the id of the record to be deleted from the database and initiate a delete command to be run at the database against the record that needs to be deleted from the database.</p>
+<pre>
+Configurations at Server.js :
+
+    app.delete("/courselist/:id",function(req,res){
+	var id = req.params.id;
+	console.log(id);
+	db.neu_courses.remove({_id : mongojs.ObjectId(id)},
+	function (err,doc){
+		res.json(doc);
+		});
+});	
+</pre>     
+        <hr />
+        <h2>References</h2>
+        <a href="https://www.youtube.com/watch?v=7m-nSxSSCno&index=4&list=UUCgliN1n-OaiYJbZV8gypNA">1. Professor Annunziato's Video tutorial on how to perform database operations from MEAN applications</a><br />
+    </div>
+</body>
+
+
+</html>

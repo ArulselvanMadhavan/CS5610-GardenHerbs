@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Experiment3:CSS-Responsive Web Page Design</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet" href="css/exp3_style.css" />
+</head>
+
+<body>
+    <div class="d_main">
+        <div class="d_heading">
+            <h1>
+                Experiment3:CSS-Responsive Web Page Design-Focus on Responsive Images and Responsive Menubars
+            </h1>
+            <h3><i>Shown below is a sample Web page</i></h3>
+            <b>Experiment Demo: Try shrinking the webpage to smaller size to notice how the sample webpage behaves responsively.</b>
+        </div>
+        <div class="d_content">
+            <div class="d_wrap">
+                <span class="s_decor"></span>
+                <nav>
+                    <ul class="primary">
+                        <li>
+                            <a href=""> Databases</a>
+                            <ul class="sub">
+                                <li><a href="">CouchDB</a></li>
+                                <li><a href="">Cassandra</a></li>
+                                <li><a href="">Hadoop</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Operating Systems</a>
+                            <ul class="sub">
+                                <li>
+                                    <a href="">Windows</a>
+                                </li>
+                                <li><a href="">Linux</a></li>
+                                <li><a href="">AIX</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">Web technologies</a>
+                            <ul class="sub">
+                                <li>
+                                    <a href="">HTML5</a>
+                                </li>
+                                <li><a href="">CSS3</a></li>
+                                <li><a href="">JQuery</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href=""> Programming languages</a>
+                            <ul class="sub">
+                                <li><a href="">C#</a></li>
+                                <li><a href="">Java</a></li>
+                                <li><a href="">Racket</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href=""> Artificial Intelligence</a>
+                            <ul class="sub">
+                                <li><a href="">Machine Learning</a></li>
+                                <li><a href="">Natural Language Processing</a></li>
+                                <li><a href="">Robotics</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href=""> Networks</a>
+                            <ul class="sub">
+                                <li><a href="">Network Security</a></li>
+                                <li><a href="">CCNA</a></li>
+                                <li><a href="">CCNA-Security</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="d_image">
+                <img id="i_mongo" src="../../images/MongoDB1.png" title="Mongo DB" />
+            </div>
+            <p>
+                MongoDB (from "humongous") is a cross-platform document-oriented database. Classified as a NoSQL database, MongoDB eschews the traditional table-based relational database structure in favor of JSON-like documents with dynamic schemas (MongoDB calls the format BSON), making the integration of data in certain types of applications easier and faster. Released under a combination of the GNU Affero General Public License and the Apache License, MongoDB is free and open-source software.
+            </p>
+            <h3>
+                <i>Main features</i>
+            </h3>
+
+            <p> <b>   <i> Document-Oriented:</i></b>Instead of taking a business subject and breaking it up into multiple relational structures, MongoDB can store the business subject in the minimal number of documents. For example, instead of storing title and author information in two distinct relational structures, title, author, and other title-related information can all be stored in a single document called Book, which is much more intuitive and usually easier to work with.</p>
+
+            <p>
+                <b>   <i>Ad hoc queries:</i></b>MongoDB supports search by field, range queries, regular expression searches. Queries can return specific fields of documents and also include user-defined JavaScript functions.
+            </p>
+            <p><b><i>Indexing:</i></b>Any field in a MongoDB document can be indexed (indices in MongoDB are conceptually similar to those in RDBMSes). Secondary indices are also available.</p>
+            <p><b><i>Replication:</i></b>MongoDB provides high availability with replica sets. A replica set consists of two or more copies of the data. Each replica set member may act in the role of primary or secondary replica at any time. The primary replica performs all writes and reads by default. Secondary replicas maintain a copy of the data on the primary using built-in replication. When a primary replica fails, the replica set automatically conducts an election process to determine which secondary should become the primary. Secondaries can also perform read operations, but the data is eventually consistent by default.</p>
+            <p>
+                <b><i>Load Balancing:</i></b>MongoDB scales horizontally using sharding.The user chooses a shard key, which determines how the data in a collection will be distributed. The data is split into ranges (based on the shard key) and distributed across multiple shards. (A shard is a master with one or more slaves.)
+                MongoDB can run over multiple servers, balancing the load and/or duplicating data to keep the system up and running in case of hardware failure. Automatic configuration is easy to deploy, and new machines can be added to a running database.
+            </p>
+            <p>
+                <b><i>File Storage:</i></b>MongoDB can be used as a file system, taking advantage of load balancing and data replication features over multiple machines for storing files.
+                This function, called GridFS, is included with MongoDB drivers and available with no difficulty for development languages (see "Language Support" for a list of supported languages). MongoDB exposes functions for file manipulation and content to developers. GridFS is used, for example, in plugins for NGINX[9] and lighttpd.[10] Instead of storing a file in a single document, GridFS divides a file into parts, or chunks, and stores each of those chunks as a separate document.
+                In a multi-machine MongoDB system, files can be distributed and copied multiple times between machines transparently, thus effectively creating a load-balanced and fault-tolerant system.
+            </p>
+            <p><b><i>Aggregation:</i></b>MapReduce can be used for batch processing of data and aggregation operations. The aggregation framework enables users to obtain the kind of results for which the SQL GROUP BY clause is used.</p>
+            <p><b><i>Server-Side Javascript Execution:</i></b>JavaScript can be used in queries, aggregation functions (such as MapReduce), and sent directly to the database to be executed.</p>
+            <p><b><i>Capped Colections</i></b>MongoDB supports fixed-size collections called capped collections. This type of collection maintains insertion order and, once the specified size has been reached, behaves like a circular queue.</p>
+        </div>
+    </div>
+    <hr />
+    <h2>Documentation</h2>
+    <p><b>Purpose of the experiment:</b>To learn the techniques to design a responsive web page</p>
+    <p><b>What does this experiment do?</b>This experiment demonstrates a web page that has an image and menu bar responsive to the size of the browser window.</p>
+    <p><b>Illustration of the experiment:</b></p>
+    <p><b>1.</b>The key to responsive webpages are the CSS media rule. By applying the @media rule to screens , we can apply to styles to variety of screensizes. </p>
+    <p><b>2.</b>In this experiment , I have applied the CSS media rule to style my menubar differently when the screen size shrinks below 600px</p>
+    <pre>
+Here is the code:
+This portion of the code gets run only when the browser screen size is less than 600px.
+@media only screen and (max-width: 600px) {
+  .decor {
+    padding: 3px;
+  }
+  
+  .wrap {
+    width: 100%;
+    margin-top: 0px;
+  }
+  
+   li {
+    float: none;
+  }
+  
+  ul.primary li:hover a {
+    background: none;
+    color: #8B8B8B;
+    text-shadow: 1px 1px #000;
+  }
+  ul.primary li:hover ul {
+    display: block;
+    background: #272727;
+    color: #fff;
+  }
+  
+  ul.sub {
+    display: block;  
+    position: static;
+    box-shadow: none;
+    width: 100%;
+  }
+  
+  ul.sub li a {
+    background: #272727;
+  	border: none;
+    color: #8B8B8B;
+  }
+  
+  ul.sub li a:hover {
+    color: #ccc;
+    background: none;
+  }
+}
+    
+</pre>
+
+    <p><b>3.</b>To produce a responsive image, I have used fluid image layout concept. (i.e)I have configured the image in context to the div element within which it lies. The image always fills its div element by 100%. But the browser div element is configured to occupy only 40% of the browser screen size. So, this makes the image shrink as the browser's screen size decreases.</p>
+    <p>Note: We always have to use % or ems to define the image layouts as they are relative to the screensize.</p>
+
+    <pre>
+Here is the code:
+.d_image {
+            width: 40%;
+        }
+#i_mongo
+        {
+            margin: 0px auto;
+            float: left;
+            border: 5px solid white;
+            width: 100%;            
+        }
+</pre>
+    <p><b>Note:</b>Code also has in-line comments that explain the styles applied to various blocks.</p>
+    <p><b></b></p>
+    <hr/>
+    <a class="links" href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/CSS3/CSS3-exp3.html" target="_blank">Link to html file</a>
+    <br />
+    <a class="links" href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/experiments/CSS3/css/exp3_style.css" target="_blank">Link to the css file</a>
+    <br />
+    <hr />
+    <h2>Refrences:</h2>
+    <a class="links" href="http://devjuhong.com"  target="_blank">1.Image Source:devjuhong.com</a>
+    <a class="links" href="http://en.wikipedia.org/wiki/MongoDB" style="color:black" target="_blank">2.Article Source:wikipedia</a>
+    <a class="links" href="http://stackoverflow.com" style="color:black" target="_blank">3.stackoverflow</a>
+    <a class="links" href="http://codepen.io" style="color:black" target="_blank">4.Codepen.io</a>
+    <a class="links" href="http://www.w3schools.com" style="color:black" target="_blank">5.w3schools</a>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Weather Client</title>
+</head>
+<body ng-app>
+<div class="container" ng-controller="Weatherclientcontroller">
+    <a>
+
+    </a>
+    <input ng-model="zip" class="form-control" placeholder="zip"/>
+    <input ng-model="No of days"  class="form-control" placeholder="No of days" />
+    <button ng-click="getweather()"> Get Weather</button>
+</div>
+    <script>
+        var URL = "";
+
+        function WeatherClientController($scope) {
+            $scope.getWeather = function () {
+                var zip = $scope.zip;
+                var no_of_days = $scope.no_of_days;
+            }
+        }
+        var url = URL.replace("ZIP", zip);
+        var url = URL.replace("ZIP", zip);
+    </script>
+</body>
+</html>

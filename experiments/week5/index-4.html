@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width" />
+    <title>MEAN STACK: Courses in NEU</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+</head>
+
+<body data-ng-app="course-rate-app">
+
+    <script type="text/javascript" src="libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="libs/lodash/dist/lodash.min.js"></script>
+    <script type="text/javascript" src="libs/underscore.string/dist/underscore.string.min.js"></script>
+    <script type="text/javascript" src="app/app.js"></script>
+    <script type="text/javascript" src="app/controller.js"></script>
+    <script type="text/javascript" src="app/services.js"></script>
+    <script type="text/javascript" src="app/filters.js"></script>
+    <script type="text/javascript" src="app/directives.js"></script>
+    <h1>Experiment 15 : MEAN Stack : Designing Single Page Application - Performing Select and Update operations on the DB</h1>
+    <h2>Experiment Demo: </h2>
+    <i>This experiment allows the user to select a record from the DB and update it.</i>
+    <!-- Adding a Controller-->
+    <div data-ng-controller="course-rate-ctrl">
+        <form role="form" data-ng-submit="addcourse(newcourse.number, newcourse.title)">
+            <div class="row">
+                <table style="width: 100%;">
+                    <tr>
+                        <td>
+                               <label class="sr-only" for="number">Number</label>
+                                <input type="text" class="form-control" name="number" placeholder="Enter the Course number that you wanna add"
+                                       data-ng-model="newcourse.number" autofocus />
+                            
+                        </td>
+                        <td>
+                                <input type="text" class="form-control" name="title" placeholder="Enter the name of the course that you wanna add"
+                                       data-ng-model="newcourse.title" />
+                            
+                        </td>
+                        <td>
+                            
+                                <button type="submit" class="btn btn-default form-control">
+                                    Add
+                                </button>
+                            
+
+                        </td>
+                        <td>
+                            
+                                <button type="button" data-ng-click="updatecourse(newcourse.number, newcourse.title)" class="btn btn-default form-control">
+                                    Update
+                                </button>
+                            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+
+            <div class="alert alert-info" data-ng-if="!courses.length">
+                <strong>First!</strong> No courses are available for rating at this moment.
+            </div>
+
+        </form>
+
+        <div class="page-header">
+            <h1>Courses available in NEU</h1>
+            <table class="table table-striped table-condensed">
+                <thead>
+                    <tr>
+                        <th>Courses</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="course in courses">
+                        <td>
+                            <div class="pull-left">
+                                <strong>{{course.number}}</strong><br />
+                                <small>{{course.title}}</small>
+                            </div>
+                            <div class="pull-right">
+
+                                <button type="button" class="btn btn-danger pull-right" ng-click="deletecourse(course._id)">
+                                    Delete
+                                </button>
+                                <button type="button" class="btn btn-warning pull-right" ng-click="selectcourse(course._id)">
+                                    Select
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="d_documentation">
+            <h2>Documentation:</h2>
+        </div>
+        <p><b>Purpose of the experiment:</b>To learn to perform select and update operations against the Mongo DB</p>
+        <p>1. In this experiment , We add a select button in-line with all the courses. When the user clicks a select button , the corresponsding record is fetched from the DB and populates the text boxes present in the page.</p>
+        <p>2. The record can then be edited and when the user clicks update , the record is then posted to the database and updated.</p>
+        <p>3. Configuration at the Controller for performing the select operation:</p>
+        <pre>
+$scope.selectcourse= function (id)
+{
+console.log(id);
+$http.get("/courselist/"+ id)
+.success(function (doc) {
+console.log(doc);
+$scope.newcourse= doc
+  });
+}
+</pre>
+<p>4. The configuration at the server for performing the select operation:</p>
+        <pre>
+app.get("/courselist/:id",function(req,res){
+var id = (req.params.id);
+db.neu_courses.findOne({_id: mongojs.ObjectId(id)},
+function(err,doc){		
+res.json(doc);
+  });
+});
+</pre>
+        <p>5.Configuration at Controller for performing Update operation:</p>
+<pre>
+$scope.updatecourse = function()
+{
+console.log("update called");
+$http.put("/courselist/"+ $scope.newcourse._id,$scope.newcourse)
+ .success(function (doc){
+$scope.all();
+   });
+}
+</pre>
+        <p>6.Configuration at Server for performing Update operation:</p>
+        <pre>
+app.put("/courselist/:id",function(req,res){
+var id = (req.params.id);
+console.log(req.body);
+db.neu_courses.findAndModify({
+query : { _id : mongojs.ObjectId(req.params.id) },
+update : { $set : {number: req.body.number, title: req.body.title} },
+new : true
+},	function (err, doc , lastErrorObject){
+res.json(doc);
+ });	
+});
+</pre>
+        <hr />
+        <a href="http://net4.ccs.neu.edu/home/arulselv/fileview/Default.aspx?~/index-4.html" style="color:black; text-decoration:underline">Link to source file</a>
+        <hr />
+        <h2>References</h2>
+<a href="https://www.youtube.com/watch?v=kw3GZGxowGM&amp;feature=youtu.be">1. Professor Annunziato's Video tutorial on MEAN application</a><br />
+    </div>
+</body>
+
+
+</html>
